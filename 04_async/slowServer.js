@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+// this is a simple slow server
 app.get("/slowrequest", (req, res) => {
   setTimeout(() => res.json({ message: "sry i was late" }), 10000); //setTimeout is used to mock a network delay of 10 seconds
 });

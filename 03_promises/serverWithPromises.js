@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 
+// when we run both routes , two request at the same time , what happens
+
 app.get('/isprime', async (req, res) => {
   const startTime = new Date();
+  // the heavy task is handled by promises but that does not solve the problem of blocking the event loop , because it is not time consuming , it is memory consuming.
   const result = await isPrime(parseInt(req.query.number)); //parseInt is for converting string to number
   const endTime = new Date();
   res.json({
@@ -12,6 +15,7 @@ app.get('/isprime', async (req, res) => {
   });
 });
 
+// this request will be blocked if we run it with the other request , it will handled only if  the other route is calculated and resolved
 app.get('/testrequest', (req, res) => {
   res.send('I am unblocked now');
 });
