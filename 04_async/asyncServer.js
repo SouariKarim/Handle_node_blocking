@@ -4,8 +4,10 @@ const fetch = require('node-fetch'); //node-fetch is a library used to make http
 
 // this is not a blocking route beavause of the node-fetch
 app.get('/calltoslowserver', async (req, res) => {
-  // this call is not a blocking task because the node-fetch returns a promise and deal with the blocking by it self
-  // the fetching is an I/O operation wich takes time to be resolved and it is not a heavy calculation wich takes memory so the async/await is the solurion for not blocking the main thread of this request
+  // this call is not a blocking task because the node-fetch returns a promise and deal with the 
+  //blocking by it self
+  // the fetching is an I/O operation wich takes time to be resolved and it is not a heavy calculation
+  // wich takes memory so the async/await is the solurion for not blocking the main thread of this request
   const result = await fetch('http://localhost:5000/slowrequest'); //fetch returns a promise
   const resJson = await result.json();
   res.json(resJson);

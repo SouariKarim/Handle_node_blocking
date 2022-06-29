@@ -1,6 +1,8 @@
 // this is the second solution using the thread workers
 
-// Worker threads can be used to solve the above-mentioned caveats with child processes because worker threads share memory and communication between threads is possible.
+// the problem with child processes solution is that the child processes does not comminicate between each other , each has it's owwn core
+// Worker threads can be used to solve the above-mentioned caveats with child processes because
+// worker threads share memory and communication between threads is possible.
 
 // the number of threads created should be equal to number of cpu cores.
 
@@ -66,6 +68,13 @@ app.get('/sumofprimeswiththreads', async (req, res) => {
     .then(
       (
         values //values is an array containing all the resolved values
+        // console.log(values)
+        // [
+//   { start: 2, end: 150000, result: 986017447 },
+//   { start: 150001, end: 300000, result: 2723489667 },
+//   { start: 300001, end: 450000, result: 4384216471 },
+//   { start: 450001, end: 600000, result: 5978102760 }
+// ]
       ) => values.reduce((accumulator, part) => accumulator + part.result, 0) //reduce is used to sum all the results from the workers
     )
     .then((finalAnswer) => finalAnswer);
