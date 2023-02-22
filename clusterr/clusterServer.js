@@ -11,6 +11,9 @@
 // the cluster is compared to PM2 module ( recommended in production ), with the cluster you can automatically use the available cores in your server
 // and it will automatically create a new process every time an active process crashes and exists, plus PM2 can also reload your application without any downtime
 // 
+// Having multiple processes to handle incoming requests means that several requests can be processed simultaneously and if there is a long-running/blocking
+// operation on one worker, the other workers can continue handling other incoming requests — your app won't have come to a standstill until the blocking operation
+// completes.
 
 const cluster = require('cluster');
 const http = require('http');
