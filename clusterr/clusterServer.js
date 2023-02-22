@@ -1,4 +1,5 @@
 // cluster is another way of solving this problem
+// !!! IMPORTANT : cluster is used for load balancing using the cpu nodes 
 
 //  In an Http server, the cluster module uses child_process.fork() to automatically fork processes
 // and sets up a master-slave architecture where the parent process distributes the incoming request
