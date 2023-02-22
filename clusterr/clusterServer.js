@@ -7,6 +7,10 @@
 // Round robin is a process used for network communication and operating system load balancing
 //. A system that works in a round robin fashion distributes load based on the round robin algorithm.
 
+// the cluster is compared to PM2 module ( recommended in production ), with the cluster you can automatically use the available cores in your server
+// and it will automatically create a new process every time an active process crashes and exists, plus PM2 can also reload your application without any downtime
+// 
+
 const cluster = require('cluster');
 const http = require('http');
 const cpuCount = require('os').cpus().length; //returns number of cores our cpu have
